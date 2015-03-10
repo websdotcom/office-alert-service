@@ -1,28 +1,221 @@
 .lights {
 		margin-left: auto;
 		margin-right: auto; 
-		width: 300px;
+		width: 600px;
 	
 	.button {
-		width: 100px;
-		height: 100px;
+		position: relative;
+		display: inline-block;
+		margin: 40px;
+		width: 180px;
+		height: 230px;
+		background-image: linear-gradient(to bottom, #464A54 0%, #2C2225 100%);
+		border-radius: 6px;
 		cursor: pointer;
-		float: left;
-		border-radius: 20px;
-		border: 5px solid;
-
-
-	}
-
-	.green {
-		float: left;		
-		background-color: green;
-	}
+		box-shadow:
+			0 -5px 0px #464649,
+			0 4px 20px fade(black, 50%),
+			0 2px 1px #66696E inset,
+			4px 0 0 fade(black, 10%) inset,
+			-4px 0 0 fade(black, 10%) inset,
+			0 -8px 2px fade(black, 10%) inset;
 	
-	.red {
-		margin-left: 30px;
-		background-color: red;
+		.hole {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			display: block;
+			width: 140px;
+			height: 186px;
+			overflow: hidden;
+			background-color: #090909;
+			border-radius: 8px;
+			box-shadow:
+				0 -2px 1px fade(white, 25%) inset,
+				0 2px 1px fade(white, 20%) inset;
+		}
+	
+		.switch {
+			position: absolute;
+			top: 6px;
+			left: 4px;
+			display: block;
+			width: 132px;
+			height: 174px;
+			background-image:
+				radial-gradient(ellipse at center, fade(white, 7%) 0%, transparent 80%),
+				radial-gradient(ellipse at center, fade(black, 15%) 0%, transparent 80%),
+				radial-gradient(ellipse at center, fade(white, 2%) 0%,  fade(white, 2%) 30%, transparent 50%),
+				linear-gradient(to bottom, #882626 0%, #290606 100%);
+			background-size: 100% 80px, 100% 80px, 10px 10px, 100%;
+			background-position: top left, bottom left, bottom left, center;
+			background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+			border-radius: 8px;
+			box-shadow:
+				2px 0 1px fade(white, 10%) inset,
+				-2px 0 1px fade(white, 10%) inset,
+				0 -2px 2px fade(white, 5%) inset,
+				0 4px 2px fade(black, 5%) inset,
+				0 -30px 8px fade(#C62D2D, 50%),
+				0 -25px 8px fade(#C62D2D, 30%),
+				0 -20px 8px fade(#C62D2D, 40%),
+				0 -15px 8px fade(#C62D2D, 50%),
+				0 -10px 8px fade(#C62D2D, 60%),
+				0 -5px 8px fade(#C62D2D, 90%);
+			transform-style: preserve-3d;
+			transform-origin: center center;
+			transform:
+				perspective(1500px)
+				rotateX(-30deg)
+				translateY(16px);
+			transition: transform 200ms ease;
+	
+			&:before {
+				content: '';
+				position: absolute;
+				top: -2px;
+				left: 5px;
+				width: 122px;
+				height: 5px;
+				background-image: radial-gradient(ellipse at center, fade(white, 40%) 0%, transparent 80%);
+			}
+	
+			.one {
+				position: absolute;
+				top: 24px;
+				left: calc(50% - 3px);
+				display: block;
+				width: 6px;
+				height: 40px;
+				background-image: linear-gradient(to bottom, #ccc 0%, #999 100%);
+				box-shadow: 0 2px 1px white inset;
+				border-radius: 4px;
+			}
+	
+			.zero {
+				position: absolute;
+				bottom: 24px;
+				left: calc(50% - 14px);
+				display: block;
+				width: 32px;
+				height: 40px;
+				box-shadow:
+					0 4px 2px fade(white, 50%) inset,
+					0 -4px 2px fade(black, 20%) inset,
+					0 0 0 6px #666 inset;
+				border-radius: 50%;
+			}
+		}
+	
+		input {
+			display: none;
+	
+			&:checked ~ .hole .switch {
+				background-image:
+					radial-gradient(ellipse at center, fade(white, 7%) 0%, transparent 80%),
+					radial-gradient(ellipse at center, fade(black, 15%) 0%, transparent 80%),
+					radial-gradient(ellipse at center, fade(#FEF400, 50%) 0%, fade(#FEF400, 20%) 30%, fade(#FEF400, 10%) 50%, transparent 80%),
+					radial-gradient(ellipse at center, fade(black, 5%) 0%,  fade(black, 5%) 30%, transparent 50%),
+					linear-gradient(to bottom, #B43222 0%, #A51810 100%);
+				background-size: 100% 80px, 100% 80px, 100% 180px, 10px 10px, 100%;
+				background-position: top left, bottom left, 0 30px, bottom left, center;
+				background-repeat: no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+				border-radius: 8px;
+				box-shadow:
+					4px 0 1px fade(white, 15%) inset,
+					-4px 0 1px fade(white, 15%) inset,
+					0 4px 1px fade(white, 15%) inset,
+					0 -12px 8px fade(black, 25%) inset,
+					0 30px 8px fade(#801105, 50%),
+					0 25px 8px fade(#801105, 30%),
+					0 20px 8px fade(#801105, 40%),
+					0 15px 8px fade(#801105, 50%),
+					0 10px 8px fade(#801105, 60%),
+					0 5px 8px fade(#801105, 90%);
+				transform:
+				perspective(1500px)
+				rotateX(30deg)
+				translateY(-16px);
+	
+				&:before {
+					top: auto;
+					bottom: -2px;
+				}
+	
+				&:after {
+					content: '';
+					position: absolute;
+					bottom: -24px;
+					left: calc(50% - 36px);
+					width: 96px;
+					height: 16px;
+					border-radius: 50%;
+					background-image: radial-gradient(ellipse at center, #FEF400 0%, fade(#FEF400, 30%) 60%, transparent 100%);
+					filter: blur(8px);
+					-webkit-filter: blur(8px);
+					-moz-filter: blur(8px);
+				}
+	
+				.one {
+					background-image: linear-gradient(to bottom, #eee 0%, #aaa 100%);
+				}
+	
+				.zero {
+					box-shadow:
+						0 4px 2px fade(white, 50%) inset,
+						0 -4px 2px fade(black, 20%) inset,
+						0 0 0 6px #aaa inset;
+				}
+			}
+		}
 	}
+
+
+	.button-green {
+		background-image: linear-gradient(to bottom, #464A54 0%, #222C25 100%);
+	
+		.switch {
+			background-image:
+				radial-gradient(ellipse at center, fade(white, 7%) 0%, transparent 80%),
+				radial-gradient(ellipse at center, fade(black, 15%) 0%, transparent 80%),
+				radial-gradient(ellipse at center, fade(white, 2%) 0%,  fade(white, 2%) 30%, transparent 50%),
+				linear-gradient(to bottom, #268826 0%, #062906 100%);
+			box-shadow:
+				2px 0 1px fade(white, 10%) inset,
+				-2px 0 1px fade(white, 10%) inset,
+				0 -2px 2px fade(white, 5%) inset,
+				0 4px 2px fade(black, 5%) inset,
+				0 -30px 8px fade(#2DC62D, 50%),
+				0 -25px 8px fade(#2DC62D, 30%),
+				0 -20px 8px fade(#2DC62D, 40%),
+				0 -15px 8px fade(#2DC62D, 50%),
+				0 -10px 8px fade(#2DC62D, 60%),
+				0 -5px 8px fade(#2DC62D, 90%);
+		}
+	
+		input {
+			&:checked ~ .hole .switch {
+				background-image:
+					radial-gradient(ellipse at center, fade(white, 7%) 0%, transparent 80%),
+					radial-gradient(ellipse at center, fade(black, 15%) 0%, transparent 80%),
+					radial-gradient(ellipse at center, fade(#FEF400, 50%) 0%, fade(#FEF400, 20%) 30%, fade(#FEF400, 10%) 50%, transparent 80%),
+					radial-gradient(ellipse at center, fade(black, 5%) 0%,  fade(black, 5%) 30%, transparent 50%),
+					linear-gradient(to bottom, #32B422 0%, #18A510 100%);
+				box-shadow:
+					4px 0 1px fade(white, 15%) inset,
+					-4px 0 1px fade(white, 15%) inset,
+					0 4px 1px fade(white, 15%) inset,
+					0 -12px 8px fade(black, 25%) inset,
+					0 30px 8px fade(#118005, 50%),
+					0 25px 8px fade(#118005, 30%),
+					0 20px 8px fade(#118005, 40%),
+					0 15px 8px fade(#118005, 50%),
+					0 10px 8px fade(#118005, 60%),
+					0 5px 8px fade(#118005, 90%);
+			}
+		}
+	}
+
 }
 
 .data {
