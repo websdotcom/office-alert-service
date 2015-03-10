@@ -16,7 +16,12 @@ app.use(lessMiddleware(__dirname + '/public/css'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
-	res.render('index', {});
+
+	var vars = {
+		events : ["bla", "blaaaa"]
+		buyers : 0
+	};
+	res.render('index', vars);
 });
 
 var port = 15001;
