@@ -1,6 +1,26 @@
 doctype html
 html(lang="en")
-  head
-    title= pageTitle
-  body
-    div.container Hello World
+	head
+		title= pageTitle
+		link(rel='stylesheet/less', type='text/css', href='/css/main.less')
+		script(src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript")
+	body
+		.lights
+				.green.button
+		
+				.red.button
+		
+				.buyers-count
+				
+	
+		.data
+			.buyers-count
+				p Total Local Listings Buyers
+				.count
+					p 0
+			
+			.alert-history
+				p Recent alerts
+				ul
+					each event in events
+						li #{event}
