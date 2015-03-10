@@ -35,5 +35,9 @@ html(lang="en")
 			.alert-history
 				p Recent alerts
 				ul
-					each event in events
-						li #{event}
+					if !events.length
+						li None
+					else
+						each event in events
+							li #{event}
+						
