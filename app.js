@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
 
 	var vars = {
-		events : ["bla", "blaaaa"]
+		events : ["bla", "blaaaa"],
 		buyers : 0
 	};
 	res.render('index', vars);
