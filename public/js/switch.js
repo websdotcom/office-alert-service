@@ -5,6 +5,8 @@ var GREEN_SWITCH = 8;
 
 $(function() {
 
+	io();
+
 	$.ajax([YUN_REST_URL, RED_SWITCH].join('/'), function(data) {
 		console.log(data);
 	});

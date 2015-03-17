@@ -2,6 +2,8 @@
 
 var express = require('express');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 var path = require('path');
 var morgan = require('morgan');
@@ -39,6 +41,14 @@ app.get('/lightSwitch/:id/:status', function(req, res) {
 	});
 });
 
+io.on('connection', function(socket) {
+	console.log('a user connected');
+	socket.on('disconnect', function() {
+		console.log('user disconnected');
+	});
+});
+
 var port = 15001;
-app.listen(port);
-console.log('express listening on port', port);
+http.listen(port, function() {
+	console.log('express listening on port', port);
+});
