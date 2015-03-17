@@ -7,6 +7,8 @@ var path = require('path');
 var morgan = require('morgan');
 var lessMiddleware = require('less-middleware');
 
+var Event = require('./lib/models/Event');
+
 app.use(morgan('dev'));
 
 app.set('views', path.join(__dirname, 'views'));
@@ -16,12 +18,16 @@ app.use(lessMiddleware(__dirname + '/public/css'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
-
-	var vars = {
-		events : [],
-		buyers : 0
-	};
-	res.render('index', vars);
+	Event.findLocalListingsBuyers().exec(function(err, buyers) {
+		if (err) {
+			console.log('there was a errors ' + err);
+		}
+		var vars = {
+			events : [],
+			buyers : buyers && buyers.length || 0
+		};
+		res.render('index', vars);
+	});
 });
 
 var port = 15001;
