@@ -6,8 +6,10 @@ var app = express();
 var path = require('path');
 var morgan = require('morgan');
 var lessMiddleware = require('less-middleware');
+var request = require('request');
 
 var Event = require('./lib/models/Event');
+var arduinoServer = require('config').get('arduinoServer');
 
 app.use(morgan('dev'));
 
@@ -27,6 +29,13 @@ app.get('/', function(req, res) {
 			buyers : buyers && buyers.length || 0
 		};
 		res.render('index', vars);
+	});
+});
+
+app.get('/lightSwitch/:id/:status', function(req, res) {
+	request({url: arduinoServer + '/' + req.params.id + '/' + req.params.status}).then(function() {
+		res.render(200);
+
 	});
 });
 
